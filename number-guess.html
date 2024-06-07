@@ -1,0 +1,43 @@
+<html>
+<head>
+
+</head>
+<body>
+<h1>숫자맞추기게임</h1>
+<p>1부터100 사이의숫자맞추기</p>
+<div id="debug"></div>
+<input id="num">
+<button onclick="calc()">정답</button>
+
+
+<script>
+dbug = document.querySelector("#debug")
+turns = 10
+num = Math.floor(Math.random()*100) + 1
+
+function calc() {
+      guess = document.querySelector("#num").value
+
+      if ( guess <= 0 )  {
+        dbug.innerHTML += "숫자를 입력하세요. 남은 횟수는 : " + turns + "<br>"
+      }
+      else if (guess == num) {
+         dbug.innerHTML += "You won! The number was " + num + " 맞춘 횟수 " + (10-turns) + "<br>"
+      }
+      else if (guess<num) {
+         turns--
+         dbug.innerHTML += "Too low. 남은 횟수는 : " + turns + "<br>"
+      }
+      else if (guess>num) {
+         turns--
+         dbug.innerHTML += "Too high. 남은 횟수는 : " + turns + "<br>"
+      }
+      if (turns == 0) {
+         dbug.innerHTML += "Stop. You failed to guess."
+      }
+
+  //dbug.innerHTML += document.querySelector("#num").value + " abc<br>"
+}
+</script>
+</body>
+</html>
