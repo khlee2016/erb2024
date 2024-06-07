@@ -1,0 +1,40 @@
+<HTML><HEAD>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style> div { position: relative; width:30vw; margin: auto } </style>
+</HEAD><BODY>
+<div><canvas id="myChart"></canvas></div>
+<script>
+  const mylabels = [];  const mydata = [];
+  const datainfo = {
+    labels: mylabels,
+    datasets: [{
+      label: 'PI(3.14) Calculation',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: mydata
+    }]
+  };
+  const config = {
+    type: 'line',
+    data: datainfo, options: {}
+  };
+</script>
+<script>
+  const myChart = new Chart(
+      document.getElementById('myChart'), config
+  ); 
+  k = 0;   dl = datainfo.labels; dd = datainfo.datasets[0].data
+  p = 1;
+  for ( i=1 ; i<=100000000 ; i++ ) {
+     x = Math.random();   y = Math.random()
+     if ( (x*x + y*y) <= 1 ) k++
+     if ( i == 10 ) {let j=i;let kk=k; setTimeout(()=>{dl.push(j); dd.push(4*kk/j); console.log(kk); myChart.update();}, 1000*p++)}
+     if ( i == 100 ) {let j=i;let kk=k; setTimeout(()=>{dl.push(j); dd.push(4*kk/j); console.log(kk); myChart.update();}, 1000*p++)}
+     if ( i == 1000 ) {let j=i;let kk=k; setTimeout(()=>{dl.push(j); dd.push(4*kk/j); console.log(kk); myChart.update();}, 1000*p++)}
+     if ( i == 10000 ) {let j=i;let kk=k; setTimeout(()=>{dl.push(j); dd.push(4*kk/j); console.log(kk); myChart.update();}, 1000*p++)}
+     if ( i == 100000 ) {let j=i;let kk=k; setTimeout(()=>{dl.push(j); dd.push(4*kk/j); console.log(kk); myChart.update();}, 1000*p++)}
+     if ( i == 1000000 ) {let j=i;let kk=k; setTimeout(()=>{dl.push(j); dd.push(4*kk/j); console.log(kk); myChart.update();}, 1000*p++)}
+     if ( (i % 10000000) == 0 ) {let j=i;let kk=k; console.log(j); setTimeout(()=>{dl.push(j); dd.push(4*kk/j); console.log(kk); myChart.update();}, 1000*p++)}
+  }
+  function redraw(t) {dl.push(t); dd.push(4*k/t); myChart.update();}
+</script></BODY></HTML>
