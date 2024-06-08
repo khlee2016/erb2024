@@ -28,10 +28,10 @@ function my() {
         mydiv.innerHTML += "<br>맞추기 실패. 최대 횟수 " + try_num + "에 도달했습니니다.";   return
     }
     if ( answer < inum ) {
-        mydiv.innerHTML += "<br>더 적은 값을 찾으세요. 현재 " + try_num + "번째 시도했음"
+        mydiv.innerHTML += "<br>"+inum+"보다 더 적은 값을 찾으세요. 현재 " + try_num + "번째 시도했음"
         num.value = ""
     } else if ( answer > inum ) {
-        mydiv.innerHTML += "<br>더 큰 값을 찾으세요. 현재 " + try_num + "번째 시도했음"
+        mydiv.innerHTML += "<br>"+inum+"보다 더 큰 값을 찾으세요. 현재 " + try_num + "번째 시도했음"
         num.value = ""
     }
 }
