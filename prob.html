@@ -1,0 +1,50 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+<button type="button" onclick="insertSort()">StartSorting</button>
+<canvas id="myChart" height="100">
+
+<script>
+function insertSort() {
+    let total = 1000;
+    let count = 1;
+    while(count++<=total) {
+        setTimeout(() => {           
+           let num = Math.floor(Math.random()*6);
+           myChart.data.datasets[0].data[num]++;
+           console.log(num);
+           myChart.update();
+        }, 10*count);
+    }
+    return true;
+}
+
+let ctx = document.getElementById('myChart').getContext('2d');
+let randomArray = [0,0,0,0,0,0];
+let myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['1', '2', '3', '4', '5', '6'],
+        datasets: [{
+            label: '# of prob',
+            data: randomArray,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(94, 162, 35, 0.2)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>

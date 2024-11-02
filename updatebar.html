@@ -1,0 +1,55 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+<button type="button" onclick="insertSort()">StartSorting</button>
+<canvas id="myChart" height="100">
+
+<script>
+function insertSort(inputArray = myChart.data.datasets[0].data) {
+    let inputArrayLength = inputArray.length;
+    let outerIndex = 1;
+    while(outerIndex<inputArrayLength) {
+        setTimeout(() => {           
+           myChart.data.datasets[0].data = Array.from({length: 10}, () => Math.floor(Math.random() * 10+1));
+           console.log('Intermediate result is: ', myChart.data.datasets[0].data.join(', '));
+           myChart.update();
+        }, 1000 * outerIndex);
+        outerIndex++;
+    }
+    console.log('Final result is: ', inputArray.join(', '));
+    return true;
+}
+
+let ctx = document.getElementById('myChart').getContext('2d');
+let randomArray = Array.from({length: 10}, () => Math.floor(Math.random() * 10+1));
+let myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Blue', 'Gray', 'Navy', 'Red'],
+        datasets: [{
+            label: '# of Votes',
+            data: randomArray,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(94, 162, 35, 0.2)',
+                'rgba(154, 62, 135, 0.2)',
+                'rgba(74, 122, 235, 0.2)',
+                'rgba(124, 12, 153, 0.2)',
+                'rgba(34, 192, 53, 0.2)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
